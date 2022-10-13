@@ -8,6 +8,13 @@ enum missing_component: int{
 	match
 };
 
+std::mutex counter_mutex;
+void increase_counter(int &c){
+	std::lock_guard<std::mutex> guard(counter_mutex);
+	c++;
+}
+
+
 int main(){
 	return 0;
 }
