@@ -1,10 +1,7 @@
 #ifndef FUNC_H
 #define FUNC_H
 
-#include <iostream>
-#include <thread>
 #include <mutex>
-#include <chrono>
 
 enum MissingComponent: int;
 void increaseCounter(int &c, std::mutex &counterMutex);
