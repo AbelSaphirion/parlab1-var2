@@ -1,8 +1,6 @@
 #include "func.h"
-#include <iostream>
 #include <thread>
 #include <mutex>
-#include <chrono>
 #include <random>
 
 void increaseCounter(int &c, std::mutex &counterMutex){
@@ -32,6 +30,5 @@ void dealer(int &c, int max_c, int &sequencer, MissingComponent &currentMissingC
 		while(sequencer == 0);
 		std::lock_guard<std::mutex> guard(smokeIterMutex);
 		sequencer = 0;
-		std::cout << "Current iteration: " << c << std::endl;
 	}
 }
