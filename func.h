@@ -10,6 +10,6 @@ enum MissingComponent: int{
 	Match
 };
 void increaseCounter(int &c, std::mutex &counterMutex);
-void smocker(int &c, int max_c, int &sequencer, MissingComponent possession, MissingComponent &currentMissingComponent, std::mutex &smokeIterMutex);
-void dealer(int &c, int max_c, int &sequencer, MissingComponent &currentMissingComponent, std::mutex &counterMutex, std::mutex &smokeIterMutex);
+void smocker(int &c, int max_c, MissingComponent possession, MissingComponent &currentMissingComponent, std::mutex &counterMutex, std::mutex &smokeIterMutex);
+void dealer(int &c, int max_c, MissingComponent &currentMissingComponent, std::mutex &smokeIterMutex);
 #endif
