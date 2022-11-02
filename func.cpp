@@ -1,3 +1,4 @@
+#include "func.h"
 #include <iostream>
 #include <thread>
 #include <mutex>
