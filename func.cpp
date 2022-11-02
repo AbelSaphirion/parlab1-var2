@@ -21,7 +21,6 @@ void smocker(int &c, int max_c, int &sequencer, MissingComponent possession, Mis
 }
 
 void dealer(int &c, int max_c, int &sequencer, MissingComponent &currentMissingComponent, std::mutex &counterMutex, std::mutex &smokeIterMutex){
-	sequencer = 0;
 	std::random_device r;
 	std::mt19937 e(r());
 	std::uniform_int_distribution gen(1, 3);
