@@ -1,6 +1,6 @@
 all: main test
 
 main:
-	g++ -g func.cpp main.cpp -o lab.o
+	g++ -pthread -g func.cpp main.cpp -o lab.o
 test:
-	g++ -g func.cpp test_module.cpp -o test.o
+	g++ -pthread -lboost_unit_test_framework -g func.cpp test_module.cpp -o test.o
