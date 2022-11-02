@@ -6,7 +6,7 @@
 #include <mutex>
 #include <chrono>
 
-enum missing_component: int;
-void increase_counter(int &c, std::mutex &counter_mutex);
-void smocker(int &c, int max_c, missing_component possession, missing_component &current_missing_component, std::mutex &counter_mutex, std::mutex &smoke_iter_mutex);
+enum MissingComponent: int;
+void increaseCounter(int &c, std::mutex &counterMutex);
+void smocker(int &c, int max_c, MissingComponent possession, MissingComponent &currentMissingComponent, std::mutex &counterMutex, std::mutex &smokeIterMutex);
 #endif
