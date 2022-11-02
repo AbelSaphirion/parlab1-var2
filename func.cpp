@@ -16,7 +16,7 @@ void smocker(int &c, int max_c, int &sequencer, MissingComponent possession, Mis
 			std::lock_guard<std::mutex> guard(smokeIterMutex);
 			if(currentMissingComponent != possession) continue;
 			sequencer++;
-			currentMissingComponent = wait;
+			currentMissingComponent = Wait;
 			std::this_thread::sleep_for(std::chrono::seconds(1));
 		}
 	}

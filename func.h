@@ -4,10 +4,10 @@
 #include <mutex>
 
 enum MissingComponent: int{
-	wait,
-	paper,
-	tabacco,
-	match
+	Wait,
+	Paper,
+	Tabacco,
+	Match
 };
 void increaseCounter(int &c, std::mutex &counterMutex);
 void smocker(int &c, int max_c, int &sequencer, MissingComponent possession, MissingComponent &currentMissingComponent, std::mutex &smokeIterMutex);
