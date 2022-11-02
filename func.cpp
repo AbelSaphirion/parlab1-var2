@@ -4,13 +4,6 @@
 #include <chrono>
 #include <random>
 
-enum MissingComponent: int{
-	wait,
-	tobacco,
-	paper,
-	match
-};
-
 void increaseCounter(int &c, std::mutex &counterMutex){
 	std::lock_guard<std::mutex> guard(counterMutex);
 	c++;
