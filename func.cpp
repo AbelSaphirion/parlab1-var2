@@ -24,7 +24,6 @@ void smocker(int &c, int max_c, int &sequencer, MissingComponent possession, Mis
 			sequencer++;
 			currentMissingComponent = wait;
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			std::cout << "Current iteration: " << c << std::endl;
 		}
 	}
 }
@@ -39,5 +38,6 @@ void dealer(int &c, int max_c, int &sequencer, MissingComponent &currentMissingC
 		while(sequencer == 0);
 		std::lock_guard<std::mutex> guard(smokeIterMutex);
 		sequencer = 0;
+		std::cout << "Current iteration: " << c << std::endl;
 	}
 }
