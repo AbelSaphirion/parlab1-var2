@@ -1,8 +1,9 @@
-name: C/C++ CI
+name: Build dev
 
 on:
   push:
     branches: [ "dev" ]
+  workflow_dispatch:
 
 jobs:
   build:
