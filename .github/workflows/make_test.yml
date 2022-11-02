@@ -12,5 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: install boost
+      run: sudo apt update && sudo apt install libboost-all-dev
     - name: make
       run: make test
