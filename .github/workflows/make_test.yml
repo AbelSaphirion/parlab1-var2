@@ -1,0 +1,16 @@
+name: Build test
+
+on:
+  push:
+    branches: [ "test" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make test
