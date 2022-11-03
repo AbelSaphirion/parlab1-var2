@@ -29,3 +29,17 @@ void dealerFunc(std::atomic<bool> &done){
 	dealer(c, c_max, currentMissingComponent, smokeIterMutex);
 	done = true;
 }
+
+BOOST_AUTO_TEST_CASE(smokerWaitSmoke){
+	c = 0;
+	c_max = 1;
+	currentMissingComponent = Wait;
+	std::thread t(smokeFunc, MissingComponent(Paper), std::ref(done1));
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == false);
+	currentMissingComponent = Paper;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == true);
+	BOOST_CHECK(currentMissingComponent == Wait);
+	t.detach();
+}
