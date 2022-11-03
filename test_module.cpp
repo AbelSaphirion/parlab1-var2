@@ -60,3 +60,28 @@ BOOST_AUTO_TEST_CASE(twoSmokersOneComponent){
 	t1.detach();
 	t2.detach();
 }
+
+BOOST_AUTO_TEST_CASE(twoSmokersTwoComponents){
+	c = 0;
+	c_max = 2;
+	currentMissingComponent = Wait;
+	std::thread t1(smokeFunc, MissingComponent(Paper), std::ref(done1));
+	std::thread t2(smokeFunc, MissingComponent(Tabacco), std::ref(done2));
+	currentMissingComponent = Tabacco;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == false);
+	BOOST_CHECK(done2 == false);
+	BOOST_CHECK(currentMissingComponent == Wait);
+	currentMissingComponent = Match;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == false);
+	BOOST_CHECK(done2 == false);
+	BOOST_CHECK(currentMissingComponent == Match);
+	currentMissingComponent = Paper;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == true);
+	BOOST_CHECK(done2 == true);
+	BOOST_CHECK(currentMissingComponent == Wait);
+	t1.detach();
+	t2.detach();
+}
