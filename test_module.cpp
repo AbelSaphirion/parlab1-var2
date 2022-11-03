@@ -85,3 +85,16 @@ BOOST_AUTO_TEST_CASE(twoSmokersTwoComponents){
 	t1.detach();
 	t2.detach();
 }
+
+BOOST_AUTO_TEST_CASE(c_maxLessThanC){
+	c = 0;
+	c_max = -1;
+	currentMissingComponent = Wait;
+	std::thread t1(smokeFunc, MissingComponent(Paper), std::ref(done1));
+	std::thread t2(dealerFunc, std::ref(done2));
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == true);
+	BOOST_CHECK(done2 == true);
+	t1.detach();
+	t2.detach();
+}
