@@ -43,3 +43,20 @@ BOOST_AUTO_TEST_CASE(smokerWaitSmoke){
 	BOOST_CHECK(currentMissingComponent == Wait);
 	t.detach();
 }
+
+BOOST_AUTO_TEST_CASE(twoSmokersOneComponent){
+	c = 0;
+	c_max = 1;
+	currentMissingComponent = Wait;
+	std::thread t1(smokeFunc, MissingComponent(Paper), std::ref(done1));
+	std::thread t2(smokeFunc, MissingComponent(Tabacco), std::ref(done2));
+	BOOST_CHECK(done1 == false);
+	BOOST_CHECK(done2 == false);
+	currentMissingComponent = Paper;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	BOOST_CHECK(done1 == true);
+	BOOST_CHECK(done2 == true);
+	BOOST_CHECK(currentMissingComponent == Wait);
+	t1.detach();
+	t2.detach();
+}
