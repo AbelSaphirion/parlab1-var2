@@ -98,3 +98,21 @@ BOOST_AUTO_TEST_CASE(c_maxLessThanC){
 	t1.detach();
 	t2.detach();
 }
+
+BOOST_AUTO_TEST_CASE(fullTest){
+	c = 0;
+	c_max = 3;
+	std::thread t1(smokeFunc, MissingComponent(Paper), std::ref(done1));
+	std::thread t2(smokeFunc, MissingComponent(Match), std::ref(done2));
+	std::thread t3(smokeFunc, MissingComponent(Tabacco), std::ref(done3));
+	std::thread t4(dealerFunc, std::ref(done4));
+	std::this_thread::sleep_for(std::chrono::seconds(5));
+	BOOST_CHECK(done1 == true);
+	BOOST_CHECK(done2 == true);
+	BOOST_CHECK(done3 == true);
+	BOOST_CHECK(done4 == true);
+	t1.detach();
+	t2.detach();
+	t3.detach();
+	t4.detach();
+}
