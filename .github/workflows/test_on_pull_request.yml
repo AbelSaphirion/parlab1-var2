@@ -1,8 +1,8 @@
-name: Build test
+name: test on pull request
 
 on:
-  push:
-    branches: [ "test" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -15,4 +15,6 @@ jobs:
     - name: install boost
       run: sudo apt update && sudo apt install libboost-test-dev
     - name: make
-      run: make test
+      run: make
+    - name: test
+      run: ./test.o
