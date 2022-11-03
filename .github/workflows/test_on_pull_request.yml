@@ -1,0 +1,20 @@
+name: test on pull request
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: install boost
+      run: sudo apt update && sudo apt install libboost-test-dev
+    - name: make
+      run: make
+    - name: test
+      run: ./test.o
