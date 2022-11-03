@@ -116,3 +116,27 @@ BOOST_AUTO_TEST_CASE(fullTest){
 	t3.detach();
 	t4.detach();
 }
+
+BOOST_AUTO_TEST_CASE(threeDealers){
+	c = 0;
+	c_max = 10;
+	std::thread t1(smokeFunc, MissingComponent(Paper), std::ref(done1));
+	std::thread t2(smokeFunc, MissingComponent(Match), std::ref(done2));
+	std::thread t3(smokeFunc, MissingComponent(Tabacco), std::ref(done3));
+	std::thread t4(dealerFunc, std::ref(done4));
+	std::thread t5(dealerFunc, std::ref(done5));
+	std::thread t6(dealerFunc, std::ref(done6));
+	std::this_thread::sleep_for(std::chrono::seconds(15));
+	BOOST_CHECK(done1 == true);
+	BOOST_CHECK(done2 == true);
+	BOOST_CHECK(done3 == true);
+	BOOST_CHECK(done4 == true);
+	BOOST_CHECK(done5 == true);
+	BOOST_CHECK(done6 == true);
+	t1.detach();
+	t2.detach();
+	t3.detach();
+	t4.detach();
+	t5.detach();
+	t6.detach();
+}
